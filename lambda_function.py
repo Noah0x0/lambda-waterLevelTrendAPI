@@ -26,10 +26,10 @@ def set_response_body(status_code, body):
 def lambda_handler(event, context):
 
     # クエリが渡されてない場合$
-    if (event['queryStringParameters'] is None):
-        return set_response_body(400, 'Bad Request')
+    if (event['pathParameters'] is None):
+        return set_response_body(400, 'Bad Request No PathParameters')
     else:
-        params = event['queryStringParameters']
+        params = event['pathParameters']
         
     # クエリパラメータが不正な場合のデフォルトを荒川に
     if (set(params) >= {'country', 'prefectures', 'river'}):
